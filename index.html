@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leader Hub | Tamil Movies 2026 </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- LOADING SCREEN UI --- */
+        #loadingScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .loading-title {
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .loading-bar-container {
+            width: 250px;
+            height: 4px;
+            background-color: #333;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #ff3344;
+            animation: loadProgress 3s linear forwards;
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* --- POPUP MODAL UI --- */
+        #popupScreen {
+            display: none;
+            background-color: #1a1a1a;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            padding: 25px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            flex-direction: column;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #fff;
+        }
+
+        .modal-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .modal-desc {
+            color: #aaaaaa;
+            font-size: 12px;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            background-color: #222222;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .feature-item {
+            padding: 15px;
+            font-size: 13px;
+            color: #dddddd;
+            border-bottom: 1px solid #333333;
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .update-text {
+            text-align: center;
+            font-size: 12px;
+            color: #dddddd;
+            margin-bottom: 15px;
+        }
+
+        .continue-btn {
+            background-color: #ff3344;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .continue-btn:hover {
+            background-color: #e62e3d;
+        }
+
+        /* --- JOIN US SECTION --- */
+        .join-us-container {
+            text-align: center;
+        }
+
+        .join-us-text {
+            font-size: 13px;
+            color: #aaaaaa;
+            margin-bottom: 10px;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .social-btn:hover {
+            opacity: 0.8;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+
+        .telegram-btn {
+            background-color: #0088cc;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="loadingScreen">
+        <div class="loading-title">LEADER HUB MOVIES</div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <div id="popupScreen">
+        <button class="close-btn" onclick="closeTab()"><i class="fas fa-times"></i></button>
+        
+        <h2 class="modal-title">LEADER HUB INFO</h2>
+        
+        <p class="modal-desc">
+            Hello guys! On this website, you can watch 2026 movies for free in high quality and also download them. If you want any movie, send the movie name in the request section and the admin will add it to the website. Sometimes the website may not work due to server issues, but the developer will fix it soon.
+        </p>
+
+        <div class="features-list">
+            <div class="feature-item">All movies are watching free</div>
+            <div class="feature-item">Movies can be downloade free</div>
+            <div class="feature-item">Watching High Quality Movies</div>
+            <div class="feature-item">Movie buffering fixed</div>
+        </div>
+
+        <p class="update-text">Website automatically updated the new movies.</p>
+
+        <button class="continue-btn" onclick="handleContinue()">CONTINUE</button>
+
+        <div class="join-us-container">
+            <div class="join-us-text">Join us our channel</div>
+            <div class="social-buttons">
+                <a href="https://whatsapp.com/channel/0029Vb8exbR1SWt5nwypHs2E" target="_blank" class="social-btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="#" target="_blank" class="social-btn telegram-btn">
+                    <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURATION LINKS ---
+        // REPLACE this with the HTML file you want to open after clicking Continue
+        const TARGET_HTML_PAGE = "Leader-Hub"; 
+        
+        // 4 hours in milliseconds (4 * 60 minutes * 60 seconds * 1000)
+        const FOUR_HOURS_MS = 4 * 60 * 60 * 1000; 
+
+        window.onload = function() {
+            const popupScreen = document.getElementById('popupScreen');
+            const loadingScreen = document.getElementById('loadingScreen');
+            
+            const lastVisitTime = localStorage.getItem('leaderHubLastVisit');
+            const currentTime = new Date().getTime();
+
+            // Check if user is visiting for the first time or if 4 hours have passed
+            if (!lastVisitTime || (currentTime - parseInt(lastVisitTime)) > FOUR_HOURS_MS) {
+                // Show Popup Modal
+                popupScreen.style.display = 'flex';
+                loadingScreen.style.display = 'none';
+            } else {
+                // Show Loading Screen
+                popupScreen.style.display = 'none';
+                loadingScreen.style.display = 'flex';
+                
+                // Redirect after 3 seconds
+                setTimeout(() => {
+                    window.location.href = TARGET_HTML_PAGE;
+                }, 3000);
+            }
+        };
+
+        function handleContinue() {
+            // Save current time to local storage
+            const currentTime = new Date().getTime();
+            localStorage.setItem('leaderHubLastVisit', currentTime);
+            
+            // Redirect to the target HTML page immediately
+            window.location.href = TARGET_HTML_PAGE;
+        }
+
+        function closeTab() {
+            // Note: Browsers usually prevent window.close() via script unless the script opened the tab initially.
+            // This is a browser security feature. It will work if the link was opened with target="_blank"
+            window.close();
+            
+            // Fallback: If close fails, redirect to Google or just hide the modal
+            // document.getElementById('popupScreen').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
