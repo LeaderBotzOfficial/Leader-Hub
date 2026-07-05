@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEADER HUB - DEVELOPER SIDE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b0d0c;
+    --bg-soft: #101312;
+    --panel: #14100c;
+    --terminal: #0d0f0d;
+    --border: #262a26;
+    --accent: #ffb454;
+    --accent-dim: #8a5f2b;
+    --accent-2: #7fb7a3;
+    --text: #f2ece1;
+    --text-muted: #8f897c;
+    --whatsapp: #25D366;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html,body{
+    height:100%;
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 32px 18px;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(255,180,84,0.08), transparent 55%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+      var(--bg);
+  }
+
+  .card{
+    width:100%;
+    max-width: 620px;
+    display:flex;
+    flex-direction:column;
+    gap: 22px;
+  }
+
+  .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .dot{
+    width:8px; height:8px;
+    border-radius:50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(255,180,84,0.55);
+    animation: pulse 1.8s ease-out infinite;
+    flex-shrink:0;
+  }
+
+  @keyframes pulse{
+    0%   { box-shadow: 0 0 0 0 rgba(255,180,84,0.55); }
+    70%  { box-shadow: 0 0 0 8px rgba(255,180,84,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,180,84,0); }
+  }
+
+  h1{
+    margin:0;
+    font-family:'JetBrains Mono', monospace;
+    font-weight:800;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  h1 span{ color: var(--accent); }
+
+  .reason{
+    margin:0;
+    max-width: 52ch;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .whatsapp-btn{
+    align-self:flex-start;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding: 13px 20px;
+    background: rgba(37,211,102,0.08);
+    border: 1px solid rgba(37,211,102,0.4);
+    border-radius: 8px;
+    color: var(--whatsapp);
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size: 14.5px;
+    text-decoration:none;
+    transition: background .18s ease, transform .18s ease, border-color .18s ease;
+  }
+
+  .whatsapp-btn:hover{
+    background: rgba(37,211,102,0.16);
+    border-color: rgba(37,211,102,0.7);
+    transform: translateY(-1px);
+  }
+
+  .whatsapp-btn:focus-visible{
+    outline: 2px solid var(--whatsapp);
+    outline-offset: 2px;
+  }
+
+  .whatsapp-btn svg{ width:18px; height:18px; flex-shrink:0; }
+  .whatsapp-btn .arrow{ transition: transform .18s ease; }
+  .whatsapp-btn:hover .arrow{ transform: translateX(3px); }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color: var(--text-muted);
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing:0.1em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--border);
+  }
+
+  .terminal{
+    background: var(--terminal);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow:hidden;
+    box-shadow: 0 20px 60px -30px rgba(0,0,0,0.8);
+  }
+
+  .terminal-bar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding: 10px 14px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .terminal-bar .tdot{ width:9px; height:9px; border-radius:50%; opacity:0.55; }
+  .tdot.r{ background:#ff5f57; }
+  .tdot.y{ background:#febc2e; }
+  .tdot.g{ background:#28c840; }
+
+  .terminal-bar .label{
+    margin-left: 6px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
+
+  .terminal-body{
+    position:relative;
+    height: 190px;
+    overflow:hidden;
+  }
+
+  .log-lines{
+    height:100%;
+    overflow-y:auto;
+    padding: 12px 14px 4px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.85;
+    scrollbar-width: none;
+  }
+  .log-lines::-webkit-scrollbar{ display:none; }
+
+  .log-line{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    color: var(--text-muted);
+    animation: fadeIn .3s ease;
+  }
+
+  @keyframes fadeIn{
+    from{ opacity:0; transform: translateY(2px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .log-line .ts{ color:#5b564c; margin-right:8px; }
+  .log-line .tag{ margin-right:8px; font-weight:600; }
+  .tag.build{ color: var(--accent); }
+  .tag.info{ color: var(--accent-2); }
+  .tag.fix{ color:#e07a7a; }
+  .tag.deploy{ color:#9aa8ff; }
+
+  .cursor-row{
+    padding: 0 14px 12px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--accent);
+    background: var(--terminal);
+  }
+
+  .cursor-row .blink{
+    display:inline-block;
+    width:7px; height:13px;
+    background: var(--accent);
+    margin-left:2px;
+    vertical-align: -2px;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .credit{
+    align-self:center;
+    margin-top: 4px;
+    font-family:'Inter', sans-serif;
+    color: var(--text-muted);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  .credit .role{ font-size: 10.5px; text-transform: uppercase; letter-spacing:0.14em; }
+
+  @media (prefers-reduced-motion: reduce){
+    .dot, .cursor-row .blink, .log-line{ animation: none; }
+  }
+
+  @media (max-width: 480px){
+    .terminal-body{ height: 160px; }
+  }
+</style>
+</head>
+<body>
+
+  <main class="card">
+    <div class="eyebrow"><span class="dot"></span>Leader Hub Website in maintenance</div>
+
+    <h1>We're rebuilding<br><span>a new website.</span></h1>
+
+    <p class="reason">Site paused due to a copyright review. We're resolving it and will be back online shortly.</p>
+
+    <a class="whatsapp-btn" href="https://whatsapp.com/channel/0029Vb8exbR1SWt5nwypHs2E" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.39 1.3-1.92 1.38-.49.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09.99-2.37.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 2.01.88 2.16.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.63-.14.26.09 1.66.78 1.94.93.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+      Join our WhatsApp channel
+      <span class="arrow">→</span>
+    </a>
+
+    <div class="divider">Live build log</div>
+
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+        <span class="label">build.log — streaming</span>
+      </div>
+      <div class="terminal-body">
+        <div class="log-lines" id="logLines"></div>
+      </div>
+      <div class="cursor-row">root@site<span style="color:var(--text-muted)">:~$</span><span class="blink"></span></div>
+    </div>
+
+    <div class="credit">Developer <span style="opacity:.5">—</span> <span class="role">Leader</span></div>
+  </main>
+
+<script>
+  const logLines = document.getElementById('logLines');
+
+  const messages = [
+    { tag: 'BUILD',  cls: 'build',  text: 'developer is developing and updating new website...' },
+    { tag: 'INFO',   cls: 'info',   text: 'compiling homepage layout...' },
+    { tag: 'FIX',    cls: 'fix',    text: 'patching flagged content for copyright review...' },
+    { tag: 'BUILD',  cls: 'build',  text: 'optimizing image assets...' },
+    { tag: 'DEPLOY', cls: 'deploy', text: 'pushing changes to staging environment...' },
+    { tag: 'INFO',   cls: 'info',   text: 'running lint checks... passed' },
+    { tag: 'BUILD',  cls: 'build',  text: 'updating navigation components...' },
+    { tag: 'INFO',   cls: 'info',   text: 'refreshing CDN cache...' },
+    { tag: 'FIX',    cls: 'fix',    text: 'reviewing license metadata...' },
+    { tag: 'BUILD',  cls: 'build',  text: 'minifying JS bundles...' },
+    { tag: 'INFO',   cls: 'info',   text: 'syncing content database...' },
+    { tag: 'DEPLOY', cls: 'deploy', text: 'verifying SSL certificates...' },
+    { tag: 'INFO',   cls: 'info',   text: 'testing responsive breakpoints...' },
+    { tag: 'BUILD',  cls: 'build',  text: 'backing up current build...' },
+    { tag: 'INFO',   cls: 'info',   text: 'checking WhatsApp channel integration...' },
+    { tag: 'DEPLOY', cls: 'deploy', text: 'preparing new website for release...' },
+    { tag: 'INFO',   cls: 'info',   text: 'almost there, hang tight...' },
+    { tag: 'BUILD',  cls: 'build',  text: 'developer is developing and updating new website...' },
+  ];
+
+  const MAX_LINES = 30;
+
+  function timestamp(){
+    const d = new Date();
+    const p = n => String(n).padStart(2, '0');
+    return `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+  }
+
+  function addLine(){
+    const m = messages[Math.floor(Math.random() * messages.length)];
+    const row = document.createElement('div');
+    row.className = 'log-line';
+    row.innerHTML = `<span class="ts">${timestamp()}</span><span class="tag ${m.cls}">[${m.tag}]</span>${m.text}`;
+    logLines.appendChild(row);
+
+    while (logLines.children.length > MAX_LINES){
+      logLines.removeChild(logLines.firstChild);
+    }
+    logLines.scrollTop = logLines.scrollHeight;
+  }
+
+  for (let i = 0; i < 6; i++) addLine();
+
+  function loop(){
+    addLine();
+    setTimeout(loop, 1100 + Math.random() * 1300);
+  }
+  loop();
+</script>
+
+</body>
+</html>
