@@ -10,7 +10,7 @@
         { id: 2, category: "Action", title: "Karuppu (HD Tamil)", poster: "https://leaderr1.neocities.org/Leader%20Hub%20Movie%20Poster%20/Karuppu-cover--3e431ab0-13cb-11f1-8c32-a5338e06444d.jpg", src: "https://s34.cdnserver04.xyz/Moviesda.Mobi_-_Karuppu_2026_Original_720p_HD_(950_MB).mp4?stream=1" },
         { id: 71, category: "Action", title: "Blast (HD Tamil)", poster: "https://leaderr1.neocities.org/Leader%20Hub%20Movie%20Poster%20/17789139545623956.jpg", src: "https://s05.cdnserver01.xyz/Moviesda.Mobi_-_Blast_2026_Original_720p_HD_(950_MB).mp4?stream=1" },
         
-        { id: 72, category: "Drama", title: "Gatta Kusthi 2 (HQ Tamil)", poster: "https://leaderr1.neocities.org/Leader%20Hub%20Movie%20Poster%20/17789139545623956.jpg", src: "https://s11.cdnserver02.xyz/Gatta_Kusthi_2_2026_HQ_PreDVD_(v2)_720p_HD_(950_MB).mp4&stream=1" },
+        { id: 72, category: "Drama", title: "Gatta Kusthi 2 (HQ Tamil)", poster: "https://leaderr1.neocities.org/Leader%20Hub%20Movie%20Poster%20/GattaKus2.jpeg", src: "https://s11.cdnserver02.xyz/Gatta_Kusthi_2_2026_HQ_PreDVD_(v2)_720p_HD_(950_MB).mp4&stream=1" },
            
            
         { id: 73, category: "Drama", title: "Engal Thangam (HQ Tamil)", poster: "https://leaderr1.neocities.org/Leader%20Hub%20Movie%20Poster%20/enga-thang.jpg", src: "https://s03.cdnserver01.xyz/Engal_Thangam_2026_HQ_PreDVD_720p_HD_(950_MB).mp4?stream=1" },
