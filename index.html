@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leader Hub | Tamil Movies Free 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://leaderr1.neocities.org/leaderhub.png">
+    <meta name="description" content="Watch Tamil movies free online. Stream latest 2026 movies, classics, and popular films. No subscription required at Leader Hub.">
+
+</head>
+<body>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- SITE INFO POPUP -->
+    <div class="info-popup-overlay" id="infoPopupOverlay">
+        <div class="info-popup">
+            <div class="info-popup-header">
+                <h2 class="info-popup-title">LEADER HUB INFO</h2>
+                <div class="info-popup-close" id="infoPopupClose">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+
+            <p class="info-popup-desc">
+                Hello guys! On this website, you can watch 2026 movies for free in high quality and also download them. If you want any movie, send the movie name in the request section and the admin will add it to the website. Sometimes the website may not work due to server issues, but the developer will fix it soon.
+            </p>
+
+            <div class="info-popup-features">
+                <div class="info-feature-item">All movies are watching free</div>
+                <div class="info-feature-item">Movies can be required free</div>
+                <div class="info-feature-item">Watching High Quality Movies</div>
+                <div class="info-feature-item">Movie buffering fixed</div>
+            </div>
+
+            <p class="info-popup-note">Website automatically updated the new movies.</p>
+
+            <button class="info-continue-btn" id="infoContinueBtn">CONTINUE</button>
+
+            <p class="info-join-text">Join us our channel</p>
+
+            <div class="info-social-row">
+                <a href="#" target="_blank" class="info-social-btn info-whatsapp-btn" id="infoWhatsAppBtn">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="#" target="_blank" class="info-social-btn info-telegram-btn" id="infoTelegramBtn">
+                    <i class="fa-brands fa-telegram"></i> Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-wrap">
+            <div class="menu-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+            <span class="logo-text">LEADER HUB</span>
+        </div>
+        <div class="search-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="mainSearch" placeholder="Search" oninput="handleSearch()">
+        </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">LEADER HUB</div>
+            <div class="sidebar-sub">Tamil Movies Free 2026</div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Menu</div>
+            <div class="sidebar-item" onclick="showHome()">
+                <i class="fa-solid fa-house"></i> Home
+            </div>
+            <div class="sidebar-item" onclick="showHistory()">
+                <i class="fa-solid fa-clock-rotate-left"></i> Watch History
+            </div>
+            <div class="sidebar-item" onclick="showSaved()">
+                <i class="fa-solid fa-bookmark"></i> Saved Videos
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-user"></i> Profile
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-circle-info"></i> About
+            </div>
+        </div>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Features</div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-wifi fa-fade" style="color:#63e6be;"></i> Movie Streaming
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-download fa-fade" style="color:#ec2828;"></i> Server Download
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-unlock"></i> Hide Videos
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-trash"></i> Bin
+            </div>
+        </div>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Get The App</div>
+            <div class="sidebar-item">
+                <i class="fa-brands fa-android fa-bounce" style="color:#a4c639;"></i> Android
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-brands fa-apple fa-flip"></i> iOS
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-brands fa-windows fa-beat-fade" style="color:#00adef;"></i> Windows
+            </div>
+        </div>
+
+        <div class="sidebar-footer">All rights reserved &copy; LeaderHub 2026</div>
+    </div>
+
+    <!-- HOME PAGE -->
+    <main id="home-page">
+        <nav class="cat-nav">
+            <button class="cat-btn active" onclick="filterCategory('All', this)">All</button>
+            <button class="cat-btn" onclick="filterCategory('Action', this)">Action</button>
+            <button class="cat-btn" onclick="filterCategory('Love', this)">Love</button>
+            <button class="cat-btn" onclick="filterCategory('Comedy', this)">Comedy</button>
+            <button class="cat-btn" onclick="filterCategory('Mystery', this)">Mystery</button>
+            <button class="cat-btn" onclick="filterCategory('Drama', this)">Drama</button>
+            <button class="cat-btn" onclick="filterCategory('Tamil Dub', this)">Tamil Dub</button>
+        </nav>
+
+        <div class="main-container">
+            <div class="section-header">
+                <div class="section-dot"></div>
+                <span class="section-title" id="sectionLabel">All Movies</span>
+            </div>
+            <div id="videoList"></div>
+        </div>
+
+        <div class="see-more-wrap">
+            <button id="seeMoreBtn" class="see-more-btn" onclick="handleSeeMore()">
+                <i class="fa-solid fa-film" style="margin-right:8px;"></i> See More
+            </button>
+        </div>
+
+        <div class="admin-banner" style="display:none;"></div>
+
+        <!-- Request Movie Box (Home) -->
+        <div class="request-box" style="margin: 0 16px 16px;">
+            <div class="request-title">
+                <i class="fa-solid fa-clapperboard"></i>
+                Request Movie
+            </div>
+            <p class="request-sub">Add movie name in the box — Leader Hub 🎬</p>
+            <div class="request-input-row">
+                <input
+                    type="text"
+                    id="homeMovieRequestInput"
+                    class="request-input"
+                    placeholder="Movie name"
+                    maxlength="100"
+                    autocomplete="off"
+                    onkeydown="if(event.key==='Enter') sendHomeMovieRequest()"
+                >
+                <button class="request-send-btn" onclick="sendHomeMovieRequest()">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Send
+                </button>
+            </div>
+        </div>
+
+        <!-- Website Info -->
+        <div class="site-info-bar">
+            <span class="site-info-label">Website Info</span>
+            <div class="site-info-pills">
+                <div class="site-pill">
+                    <span class="site-pill-dot pulse-red"></span>
+                    <span class="site-pill-key">Users</span>
+                    <span class="site-pill-val" id="siteUsers">21+</span>
+                </div>
+                <div class="site-pill">
+                    <span class="site-pill-dot pulse-green"></span>
+                    <span class="site-pill-key">Server Domain</span>
+                    <span class="site-pill-val" id="siteOnline">--</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- PLAYER VIEW -->
+    <div id="player-view">
+        <div class="player-nav">
+            <div class="back-btn" onclick="handleBack()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <span class="player-title" id="playerNavTitle">Leader Hub</span>
+        </div>
+
+        <!-- CUSTOM VIDEO PLAYER -->
+        <div class="cvp-wrap" id="cvpWrap">
+            <video id="mainVid" preload="metadata" playsinline
+                oncontextmenu="return false;"
+                style="-webkit-touch-callout:none; user-select:none; -webkit-user-select:none;"
+            ></video>
+
+            <!-- Loading spinner -->
+            <div class="cvp-loader" id="cvpLoader">
+                <div class="cvp-spinner"></div>
+            </div>
+
+            <!-- Centre play/pause tap feedback -->
+            <div class="cvp-tap-icon" id="cvpTapIcon">
+                <i class="fa-solid fa-play" id="cvpTapIconI"></i>
+            </div>
+
+            <!-- Skip flash left -->
+            <div class="cvp-skip-flash cvp-skip-left" id="cvpSkipLeft">
+                <i class="fa-solid fa-backward-fast"></i>
+                <span>-10s</span>
+            </div>
+
+            <!-- Skip flash right -->
+            <div class="cvp-skip-flash cvp-skip-right" id="cvpSkipRight">
+                <i class="fa-solid fa-forward-fast"></i>
+                <span>+10s</span>
+            </div>
+
+            <!-- Long-press 2x hold badge (top center) -->
+            <div class="cvp-speed-badge" id="cvpSpeedBadge">
+                <i class="fa-solid fa-gauge-high"></i>&nbsp;2×
+            </div>
+
+            <!-- CONTROLS OVERLAY -->
+            <div class="cvp-controls" id="cvpControls">
+
+                <!-- Timeline -->
+                <div class="cvp-timeline-wrap" id="cvpTimelineWrap">
+                    <span class="cvp-time" id="cvpCurrent">0:00</span>
+                    <div class="cvp-bar" id="cvpBar">
+                        <div class="cvp-buf" id="cvpBuf"></div>
+                        <div class="cvp-prog" id="cvpProg"></div>
+                        <div class="cvp-thumb" id="cvpThumb"></div>
+                    </div>
+                    <span class="cvp-time" id="cvpDuration">0:00</span>
+                </div>
+
+                <!-- Bottom row: play | spacer | settings + fullscreen -->
+                <div class="cvp-bottom-row">
+                    <!-- Play/Pause -->
+                    <button class="cvp-btn cvp-play-btn" id="cvpPlayBtn" onclick="cvpTogglePlay()">
+                        <i class="fa-solid fa-play" id="cvpPlayIcon"></i>
+                    </button>
+
+                    <div class="cvp-spacer"></div>
+
+                    <!-- Settings btn (right) -->
+                    <div class="cvp-right-btns">
+                        <button class="cvp-btn" id="cvpSettBtn" onclick="cvpTogglePanel(event)">
+                            <i class="fa-solid fa-sliders"></i>
+                        </button>
+                        <!-- Fullscreen btn -->
+                        <button class="cvp-btn" id="cvpFsBtn" onclick="cvpToggleFS()">
+                            <i class="fa-solid fa-expand" id="cvpFsIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Settings panel (liquid glass, above settings icon) -->
+                <div class="cvp-panel" id="cvpPanel">
+                    <div class="cvp-panel-opt" id="cvpOptMute" onclick="cvpToggleMute()">
+                        <i class="fa-solid fa-volume-high" id="cvpMuteIcon"></i>
+                        <span>Mute</span>
+                        <span class="cvp-badge" id="cvpMuteLbl">OFF</span>
+                    </div>
+                    <div class="cvp-panel-sep"></div>
+                    <div class="cvp-panel-opt" id="cvpOpt2x" onclick="cvpToggle2x()">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <span>Speed 2×</span>
+                        <span class="cvp-badge" id="cvp2xLbl">OFF</span>
+                    </div>
+                    <div class="cvp-panel-sep"></div>
+                    <div class="cvp-panel-opt" onclick="cvpAdmin()">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <span>Admin</span>
+                    </div>
+                </div>
+
+            </div><!-- /cvp-controls -->
+        </div><!-- /cvp-wrap -->
+
+        <div class="vid-info-section">
+            <h2 id="p-title">Loading...</h2>
+            <div class="vid-info-meta">
+                <span><i class="fa-solid fa-circle" style="color:var(--red);font-size:0.5rem;"></i> Leader Hub</span>
+                <span><i class="fa-solid fa-signal"></i> Streaming</span>
+                <span><i class="fa-solid fa-shield-halved" style="color:#63e6be;"></i> Free</span>
+            </div>
+        </div>
+
+        <div class="video-actions">
+            <div class="action-item" onclick="handleLike()" id="likeBtn">
+                <i class="fa-solid fa-heart"></i>
+                <span>Like</span>
+            </div>
+            <div class="action-item" onclick="handleSave()" id="saveBtn">
+                <i class="fa-solid fa-bookmark"></i>
+                <span>Save</span>
+            </div>
+            <div class="action-item" onclick="togglePlayerExtra()" id="hideExtraBtn">
+                <i class="fa-solid fa-eye-slash" id="hideExtraIcon"></i>
+                <span>Hide</span>
+            </div>
+            <div class="action-item" onclick="shareWhatsApp()">
+                <i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>
+                <span>WhatsApp</span>
+            </div>
+            <div class="action-item" onclick="shareTelegram()">
+                <i class="fa-brands fa-telegram" style="color:#229ED9;"></i>
+                <span>Telegram</span>
+            </div>
+        </div>
+<br>
+
+        <!-- Collapsible extra section -->
+        <div id="playerExtra" style="overflow:hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease; max-height: 900px; opacity: 1;">
+        <div class="device-card" id="deviceCard">
+            <div class="device-row">
+                <div class="device-cell">
+                    <span class="dc-label">Server</span>
+                    <span class="dc-val neon-green" id="dcNetwork">-- ms</span>
+                </div>
+                <div class="device-cell">
+                    <span class="dc-label">Battery</span>
+                    <span class="dc-val neon-green" id="dcBattery">--%</span>
+                </div>
+            </div>
+            <div class="device-row">
+                <div class="device-cell">
+                    <span class="dc-label">Model</span>
+                    <span class="dc-val neon-green" id="dcModel">---</span>
+                </div>
+                <div class="device-cell">
+                    <span class="dc-label">Screen Time</span>
+                    <span class="dc-val neon-green" id="dcScreenTime">0 Mins</span>
+                </div>
+            </div>
+        </div>
+<br>
+        <!-- Request Movie Box -->
+        <div class="request-box">
+            <div class="request-title">
+                <i class="fa-solid fa-clapperboard"></i>
+                Request Movie
+            </div>
+            <p class="request-sub">Add movie name in the box — Leader Hun 🎬</p>
+            <div class="request-input-row">
+                <input
+                    type="text"
+                    id="movieRequestInput"
+                    class="request-input"
+                    placeholder="Movie name"
+                    maxlength="100"
+                    autocomplete="off"
+                    onkeydown="if(event.key==='Enter') sendMovieRequest()"
+                >
+                <button class="request-send-btn" onclick="sendMovieRequest()">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Send
+                </button>
+            </div>
+        </div>
+        </div><!-- /playerExtra -->
+    </div><!-- /player-view -->
+    <div id="mini-player">
+        <button class="mini-close" id="miniCloseBtn">✕</button>
+        <video id="miniVid" muted></video>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
