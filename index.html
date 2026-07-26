@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>/LEADER HUB DEVELOPER PAGE/ROOT</title>
+<title>ROOT/LeaderHub/Server/DeveloperPage/Update</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -23,42 +20,38 @@ box-sizing:border-box;
 }
 
 body{
-
-background:#dde1e7;
-font-family:Poppins,sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
 height:100vh;
-overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#e0e5ec;
+font-family:Poppins,sans-serif;
+
+}
+.container{
+
+width:90%;
+max-width:420px;
 
 }
 
-.mobile{
+.box{
 
-width:100%;
-max-width:430px;
-padding:25px;
-
-}
-
-.card{
-
-background:#dde1e7;
+background:#e0e5ec;
+padding:30px;
 border-radius:30px;
-padding:25px;
 text-align:center;
 
 box-shadow:
-12px 12px 25px #b8bcc2,
--12px -12px 25px #ffffff;
+10px 10px 25px #b8bcc2,
+-10px -10px 25px #ffffff;
 
 }
 
 .icon{
 
 font-size:45px;
-color:#4b4b4b;
+color:#555;
 margin-bottom:15px;
 
 }
@@ -66,52 +59,48 @@ margin-bottom:15px;
 h2{
 
 font-family:Orbitron;
-margin-bottom:15px;
-font-size:24px;
+font-size:22px;
 
 }
 
 p{
 
-font-size:15px;
-line-height:1.8;
+margin-top:15px;
 color:#555;
+line-height:1.7;
 
 }
+
 
 button{
 
 margin-top:25px;
-
 width:100%;
-
 height:55px;
 
 border:none;
+border-radius:20px;
 
-border-radius:18px;
-
-background:#dde1e7;
+background:#e0e5ec;
 
 font-size:17px;
-
 font-weight:600;
 
-cursor:pointer;
-
 box-shadow:
-8px 8px 18px #b8bcc2,
--8px -8px 18px #fff;
+8px 8px 15px #b8bcc2,
+-8px -8px 15px #fff;
 
 }
+
 
 button:active{
 
 box-shadow:
-inset 8px 8px 18px #b8bcc2,
-inset -8px -8px 18px #fff;
+inset 8px 8px 15px #b8bcc2,
+inset -8px -8px 15px #fff;
 
 }
+
 
 .hidden{
 
@@ -119,127 +108,136 @@ display:none;
 
 }
 
-.speedbox{
 
-margin-top:20px;
+/* Speedometer */
+
+.speed{
+
+text-align:center;
 
 }
 
 svg{
 
-width:280px;
-height:280px;
+width:260px;
+height:260px;
 
 }
 
-.circle-bg{
+.bg{
 
 fill:none;
-stroke:#cfd3d8;
+stroke:#c7ccd2;
 stroke-width:18;
 
 }
 
-.circle{
+.progress{
 
 fill:none;
-stroke:#4a7cff;
+stroke:#4385ff;
 stroke-width:18;
 stroke-linecap:round;
+
 stroke-dasharray:754;
 stroke-dashoffset:754;
+
 transform:rotate(-90deg);
 transform-origin:center;
 
 }
 
-.centerText{
+
+.text{
 
 font-family:Orbitron;
-font-size:26px;
+font-size:25px;
 fill:#333;
 
 }
 
+
 .balance{
 
-margin-top:15px;
 font-size:18px;
 font-weight:600;
 
-}
-
-.status{
-
 margin-top:10px;
-font-size:15px;
-color:#666;
 
 }
-
-
 
 </style>
+
 </head>
+
+
 <body>
 
-<div class="mobile">
+<div class="container">
 
-<div class="card">
 
-<div id="notify">
+<div class="box" id="page1">
 
 <div class="icon">
+
 <i class="fa-solid fa-screwdriver-wrench"></i>
+
 </div>
 
-<h2>Developer Page</h2>
 
+<h2>
+Leader Hub Server
+</h2>
 <p>
 
 Our website is currently under maintenance.
-
-We are updating the system and fetching content from the older website to improve performance and stability.
-
-Please tap the Update button below.
+<br>
+We are updating the system and fetching the older website data for better performance.
 
 </p>
 
+
 <button onclick="startUpdate()">
 
-<i class="fa-solid fa-download"></i>
-
-Fetch 
+<i class="fa-solid fa-cloud-arrow-down"></i>
+ Fetch
 
 </button>
 
+
 </div>
 
-<div class="speedbox hidden" id="speedbox">
 
-<h2>LeaderHub Resetting</h2>
+<div class="box hidden" id="page2">
 
-<svg viewBox="0 0 300 300">
 
-<circle
-class="circle-bg"
-cx="150"
-cy="150"
-r="120"/>
+<div class="speed">
 
-<circle
-id="progress"
-class="circle"
-cx="150"
-cy="150"
-r="120"/>
+<h2>
+Server Restarting
+</h2>
 
-<text
-x="150"
-y="160"
+
+<svg>
+
+<circle class="bg"
+cx="130"
+cy="130"
+r="110"/>
+
+
+<circle id="bar"
+class="progress"
+cx="130"
+cy="130"
+r="110"/>
+
+
+<text id="percent"
+x="130"
+y="140"
 text-anchor="middle"
-class="centerText"
-id="percent">
+class="text">
 
 0%
 
@@ -247,97 +245,200 @@ id="percent">
 
 </svg>
 
-<div class="balance" id="balance">
+<div class="balance" id="mb">
 
-Remaining :
-102400 GB
-
-</div>
-
-<div class="status">
-
-Restarting...
+Remaining : 102400 MB
 
 </div>
 
-</div>
+<p>
+
+Updating website...
+
+</p>
+
 
 </div>
 
 </div>
 
-<audio
-id="music"
-loop
-hidden>
 
-<source src="NA SHIRA.mp3">
+<div class="box hidden" id="page3">
+
+
+<div class="icon">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+</div>
+
+
+<h2>
+Website Under Maintenance
+</h2>
+
+
+<p>
+Updating... Join to official channel
+</p>
+
+</div>
+
+</div>
+
+<audio id="song" hidden>
+
+<source src="FUNK_TAKA.mp3">
 
 </audio>
 
+
 <script>
+
+
+const channel =
+"https://whatsapp.com/channel/0029Vb8exbR1SWt5nwypHs2E";
+
+
 
 function startUpdate(){
 
-document.getElementById("notify").style.display="none";
 
-document.getElementById("speedbox").classList.remove("hidden");
+localStorage.setItem("updated","true");
 
-document.getElementById("music").play();
 
-let circle=document.getElementById("progress");
+document.getElementById("page1").classList.add("hidden");
+
+document.getElementById("page2").classList.remove("hidden");
+
+
+
+let audio=document.getElementById("song");
+
+audio.play();
+
+
+
+let bar=document.getElementById("bar");
 
 let percent=document.getElementById("percent");
 
-let balance=document.getElementById("balance");
+let mb=document.getElementById("mb");
 
-const total=102400;
 
-const duration=180000;
 
-const interval=100;
+let total=102400;
 
-const steps=duration/interval;
+let time=180000;
+
+let step=100;
+
+let count=time/step;
 
 let current=0;
 
-const circumference=754;
+
+let circumference=754;
+
+
 
 let timer=setInterval(()=>{
 
+
 current++;
 
-let p=current/steps;
 
-let dash=circumference-(circumference*p);
+let value=current/count;
 
-circle.style.strokeDashoffset=dash;
 
-let per=Math.floor(p*100);
+bar.style.strokeDashoffset=
+circumference-(circumference*value);
 
-percent.innerHTML=per+"%";
 
-let remain=Math.floor(total-(total*p));
 
-balance.innerHTML="Remaining : "+remain+" GB/hz";
+let p=Math.floor(value*100);
 
-if(current>=steps){
+
+percent.innerHTML=p+"%";
+
+
+let remain=Math.floor(total-(total*value));
+
+
+mb.innerHTML=
+"Server : "+remain+" GB/Hz";
+
+
+
+
+if(current>=count){
+
 
 clearInterval(timer);
 
-percent.innerHTML="100%";
 
-balance.innerHTML="Remaining : 0 MB";
+openMaintenance();
 
-window.location.href="https://whatsapp.com/channel/0029Vb8exbR1SWt5nwypHs2E";
 
 }
 
-},interval);
+
+},step);
+
+
 
 }
+
+
+
+function openMaintenance(){
+
+
+document.getElementById("page2").classList.add("hidden");
+
+
+document.getElementById("page3").classList.remove("hidden");
+
+
+
+setTimeout(()=>{
+
+
+window.location.href=channel;
+
+
+},3000);
+
+
+
+}
+
+
+
+window.onload=function(){
+
+
+if(localStorage.getItem("updated")){
+
+
+document.getElementById("page1").classList.add("hidden");
+
+document.getElementById("page3").classList.remove("hidden");
+
+
+setTimeout(()=>{
+
+window.location.href=channel;
+
+},3000);
+
+
+}
+
+
+}
+
 
 </script>
-
 </body>
 </html>
