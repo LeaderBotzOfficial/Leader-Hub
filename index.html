@@ -1,444 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ROOT/LeaderHub/Server/DeveloperPage/Update</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#e0e5ec;
-font-family:Poppins,sans-serif;
-
-}
-.container{
-
-width:90%;
-max-width:420px;
-
-}
-
-.box{
-
-background:#e0e5ec;
-padding:30px;
-border-radius:30px;
-text-align:center;
-
-box-shadow:
-10px 10px 25px #b8bcc2,
--10px -10px 25px #ffffff;
-
-}
-
-.icon{
-
-font-size:45px;
-color:#555;
-margin-bottom:15px;
-
-}
-
-h2{
-
-font-family:Orbitron;
-font-size:22px;
-
-}
-
-p{
-
-margin-top:15px;
-color:#555;
-line-height:1.7;
-
-}
-
-
-button{
-
-margin-top:25px;
-width:100%;
-height:55px;
-
-border:none;
-border-radius:20px;
-
-background:#e0e5ec;
-
-font-size:17px;
-font-weight:600;
-
-box-shadow:
-8px 8px 15px #b8bcc2,
--8px -8px 15px #fff;
-
-}
-
-
-button:active{
-
-box-shadow:
-inset 8px 8px 15px #b8bcc2,
-inset -8px -8px 15px #fff;
-
-}
-
-
-.hidden{
-
-display:none;
-
-}
-
-
-/* Speedometer */
-
-.speed{
-
-text-align:center;
-
-}
-
-svg{
-
-width:260px;
-height:260px;
-
-}
-
-.bg{
-
-fill:none;
-stroke:#c7ccd2;
-stroke-width:18;
-
-}
-
-.progress{
-
-fill:none;
-stroke:#4385ff;
-stroke-width:18;
-stroke-linecap:round;
-
-stroke-dasharray:754;
-stroke-dashoffset:754;
-
-transform:rotate(-90deg);
-transform-origin:center;
-
-}
-
-
-.text{
-
-font-family:Orbitron;
-font-size:25px;
-fill:#333;
-
-}
-
-
-.balance{
-
-font-size:18px;
-font-weight:600;
-
-margin-top:10px;
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Leader Hub premium website access">
+  <title>Leader Hub Official Homepage</title>
+
+  <!-- Modern fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #040404;
+      --surface: rgba(255, 255, 255, 0.045);
+      --surface-hover: rgba(255, 255, 255, 0.07);
+      --border: rgba(255, 255, 255, 0.09);
+      --border-red: rgba(145, 15, 35, 0.42);
+      --red: #9f1830;
+      --red-soft: #762033;
+      --text: #eeeeee;
+      --muted: #858585;
+      --muted-2: #666666;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(100, 8, 25, 0.16),
+          transparent 34%
+        ),
+        linear-gradient(180deg, #060606 0%, #020202 100%);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle background texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 70%);
+      -webkit-mask-image: linear-gradient(to bottom, black, transparent 70%);
+    }
+
+    .page {
+      width: min(100% - 28px, 590px);
+      margin: 0 auto;
+      padding: 32px 0 22px;
+    }
+
+    /* =========================
+       LOGO
+    ========================= */
+
+    .brand {
+      text-align: center;
+      animation: appear 0.7s ease both;
+    }
+
+    .brand-logo {
+      display: inline-block;
+      width: clamp(120px, 34vw, 175px);
+      height: auto;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 5px 16px rgba(0, 0, 0, 0.75))
+        drop-shadow(0 0 8px rgba(100, 10, 28, 0.2));
+    }
+
+    .logo-fallback {
+      display: none;
+      font-family: "Outfit", sans-serif;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #dedede;
+    }
+
+    .brand-line {
+      width: 28px;
+      height: 1px;
+      margin: 12px auto 0;
+      background: var(--red-soft);
+      opacity: 0.8;
+    }
+
+    /* =========================
+       NOTE
+    ========================= */
+
+    .note {
+      margin-top: 23px;
+      padding: 14px 15px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.032);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+      animation: appearUp 0.7s 0.08s ease both;
+    }
+
+    .note-title {
+      font-family: "Outfit", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: #d8d8d8;
+      margin-bottom: 8px;
+    }
+
+    .note p {
+      font-size: 11.5px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .note p + p {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255,255,255,0.045);
+    }
+
+    .note .en {
+      color: #b6b6b6;
+    }
+
+    .note .ta {
+      color: #777;
+    }
+
+    /* =========================
+       WEBSITE BUTTONS
+    ========================= */
+
+    .actions {
+      margin-top: 15px;
+      display: grid;
+      gap: 9px;
+      animation: appearUp 0.7s 0.16s ease both;
+    }
+
+    .website-button {
+      width: 100%;
+      min-height: 51px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      outline: none;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      color: #dedede;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.055),
+          rgba(255,255,255,0.025)
+        );
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 8px 25px rgba(0,0,0,0.32),
+        inset 0 1px 0 rgba(255,255,255,0.035);
+
+      font-family: "Manrope", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .website-button svg {
+      width: 16px;
+      height: 16px;
+      stroke: #a8a8a8;
+      transition: stroke 0.2s ease, transform 0.2s ease;
+    }
+
+    .website-button:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-red);
+      box-shadow:
+        0 10px 28px rgba(0,0,0,0.38),
+        inset 0 0 18px rgba(110, 10, 28, 0.06);
+    }
+
+    .website-button:hover svg {
+      stroke: #b52a45;
+      transform: translateX(2px);
+    }
+
+    .website-button:active {
+      transform: scale(0.975);
+      border-color: rgba(145, 15, 35, 0.5);
+    }
+
+    /* =========================
+       BOTTOM INFO
+    ========================= */
+
+    .info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+      animation: appearUp 0.7s 0.23s ease both;
+    }
+
+    .info-item {
+      min-width: 0;
+      padding: 10px 11px;
+      border-left: 1px solid rgba(145, 15, 35, 0.32);
+      background: rgba(255,255,255,0.018);
+      border-radius: 9px;
+    }
+
+    .info-item h3 {
+      font-family: "Outfit", sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      color: #a6a6a6;
+      margin-bottom: 3px;
+    }
+
+    .info-item p {
+      font-size: 9.5px;
+      line-height: 1.45;
+      color: #686868;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      margin-top: 18px;
+      text-align: center;
+      animation: appear 0.7s 0.3s ease both;
+    }
+
+    footer p {
+      font-size: 9px;
+      line-height: 1.65;
+      color: #505050;
+    }
+
+    footer strong {
+      color: #6d6d6d;
+      font-weight: 500;
+    }
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes appearUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       DESKTOP
+    ========================= */
+
+    @media (min-width: 700px) {
+      .page {
+        padding-top: 50px;
+      }
+
+      .brand-logo {
+        width: 175px;
+      }
+
+      .note {
+        margin-top: 28px;
+      }
+
+      .actions {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* =========================
+       VERY SMALL PHONES
+    ========================= */
+
+    @media (max-width: 360px) {
+      .page {
+        width: min(100% - 20px, 590px);
+        padding-top: 25px;
+      }
+
+      .note {
+        padding: 12px;
+      }
+
+      .note p {
+        font-size: 10.5px;
+      }
+
+      .website-button {
+        min-height: 48px;
+        font-size: 12px;
+      }
+
+      .info-item {
+        padding: 8px;
+      }
+    }
+
+    /* Reduce motion when requested by device */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-<div class="container">
+  <main class="page">
+
+    <!-- LOGO -->
+    <header class="brand">
+
+      <img
+        class="brand-logo"
+        src="https://leaderr1.neocities.org/leaderhub.png"
+        alt="Leader Hub"
+        onerror="
+          this.style.display='none';
+          document.querySelector('.logo-fallback').style.display='block';
+        "
+      >
+
+      <div class="logo-fallback">LEADER HUB</div>
+
+      <div class="brand-line"></div>
+
+    </header>
 
 
-<div class="box" id="page1">
+    <!-- NOTE -->
+    <section class="note" aria-labelledby="note-title">
 
-<div class="icon">
+      <h2 class="note-title" id="note-title">Note</h2>
 
-<i class="fa-solid fa-screwdriver-wrench"></i>
+      <p class="en">
+        This website provides simple access to our platforms, designed for fast and convenient navigation.
+      </p>
 
-</div>
+      <p class="ta">
+        இந்த இணையதளம் எங்கள் தளங்களை எளிதாக அணுகவும், வேகமாகவும் வசதியாகவும் பயன்படுத்தவும் உதவுகிறது.
+      </p>
 
+    </section>
 
-<h2>
-Leader Hub Server
-</h2>
-<p>
-
-Our website is currently under maintenance.
 <br>
-We are updating the system and fetching the older website data for better performance.
 
-</p>
+<br>
+
+    <!-- WEBSITE BUTTONS -->
+    <section class="actions" aria-label="Website options">
+
+      <button
+        class="website-button"
+        id="oldBtn"
+        type="button"
+        aria-label="Open Old Website"
+      >
+        <!-- External link icon -->
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M14 4h6v6"></path>
+          <path d="M10 14L20 4"></path>
+          <path d="M20 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5"></path>
+        </svg>
+
+
+        <span>Open Old Website</span>
+      </button>
+
+
+      <button
+        class="website-button"
+        id="newBtn"
+        type="button"
+        aria-label="Open New Website"
+      >
+        <!-- Arrow icon -->
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h13"></path>
+          <path d="m13 6 6 6-6 6"></path>
+        </svg>
+
+        <span>Open New Website</span>
+      </button>
+
+    </section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+    <!-- SMALL INFORMATION -->
+    <section class="info" aria-label="Website information">
+
+      <article class="info-item">
+        <h3>Old Website</h3>
+        <p>Watching some movies HD quality online.</p>
+      </article>
+
+      <article class="info-item">
+        <h3>New Website</h3>
+        <p>Download movies with multiple resolutions.</p>
+      </article>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+      <p>
+        <strong>Old Website</strong> · Online Watching
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <strong>New Website</strong> · Multiple Resolutions
+      </p>
+
+      <p>
+        © <span id="year"></span>Leader Hub Official 
+      </p>
 
+    </footer>
 
-<button onclick="startUpdate()">
+  </main>
 
-<i class="fa-solid fa-cloud-arrow-down"></i>
- Fetch
 
-</button>
+  <script>
+    /*
+     * ==========================================
+     * WEBSITE URL SETTINGS
+     * ==========================================
+     *
+     * Replace the values below with your links.
+     */
 
+    const oldWebsiteURL = "Movie";
+    const newWebsiteURL = "YOUR_NEW_WEBSITE_URL";
 
-</div>
 
+    /*
+     * ==========================================
+     * OPEN WEBSITE
+     * ==========================================
+     */
 
-<div class="box hidden" id="page2">
+    function openWebsite(url) {
 
+      if (!url || url.includes("YOUR_")) {
+        alert("WEBSITE IN UNDER MAINTENANCE - LEADER HUB");
+        return;
+      }
 
-<div class="speed">
+      window.location.href = url;
+    }
 
-<h2>
-Server Restarting
-</h2>
 
+    /*
+     * OLD WEBSITE
+     */
 
-<svg>
+    document
+      .getElementById("oldBtn")
+      .addEventListener("click", function () {
+        openWebsite(oldWebsiteURL);
+      });
 
-<circle class="bg"
-cx="130"
-cy="130"
-r="110"/>
 
+    /*
+     * NEW WEBSITE
+     */
 
-<circle id="bar"
-class="progress"
-cx="130"
-cy="130"
-r="110"/>
+    document
+      .getElementById("newBtn")
+      .addEventListener("click", function () {
+        openWebsite(newWebsiteURL);
+      });
 
 
-<text id="percent"
-x="130"
-y="140"
-text-anchor="middle"
-class="text">
+    /*
+     * ==========================================
+     * CURRENT YEAR
+     * ==========================================
+     */
 
-0%
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-</text>
 
-</svg>
+    /*
+     * ==========================================
+     * MOBILE PRESS FEEDBACK
+     * ==========================================
+     */
 
-<div class="balance" id="mb">
+    document.querySelectorAll(".website-button").forEach(button => {
 
-Remaining : 102400 MB
+      button.addEventListener(
+        "touchstart",
+        () => {
+          button.style.transform = "scale(0.975)";
+        },
+        { passive: true }
+      );
 
-</div>
+      button.addEventListener(
+        "touchend",
+        () => {
+          button.style.transform = "";
+        },
+        { passive: true }
+      );
 
-<p>
+      button.addEventListener(
+        "touchcancel",
+        () => {
+          button.style.transform = "";
+        },
+        { passive: true }
+      );
 
-Updating website...
+    });
+  </script>
 
-</p>
-
-
-</div>
-
-</div>
-
-
-<div class="box hidden" id="page3">
-
-
-<div class="icon">
-
-<i class="fa-solid fa-triangle-exclamation"></i>
-
-</div>
-
-
-<h2>
-Website Under Maintenance
-</h2>
-
-
-<p>
-Updating... Join to official channel
-</p>
-
-</div>
-
-</div>
-
-<audio id="song" hidden>
-
-<source src="FUNK_TAKA.mp3">
-
-</audio>
-
-
-<script>
-
-
-const channel =
-"https://whatsapp.com/channel/0029Vb8exbR1SWt5nwypHs2E";
-
-
-
-function startUpdate(){
-
-
-localStorage.setItem("updated","true");
-
-
-document.getElementById("page1").classList.add("hidden");
-
-document.getElementById("page2").classList.remove("hidden");
-
-
-
-let audio=document.getElementById("song");
-
-audio.play();
-
-
-
-let bar=document.getElementById("bar");
-
-let percent=document.getElementById("percent");
-
-let mb=document.getElementById("mb");
-
-
-
-let total=102400;
-
-let time=180000;
-
-let step=100;
-
-let count=time/step;
-
-let current=0;
-
-
-let circumference=754;
-
-
-
-let timer=setInterval(()=>{
-
-
-current++;
-
-
-let value=current/count;
-
-
-bar.style.strokeDashoffset=
-circumference-(circumference*value);
-
-
-
-let p=Math.floor(value*100);
-
-
-percent.innerHTML=p+"%";
-
-
-let remain=Math.floor(total-(total*value));
-
-
-mb.innerHTML=
-"Server : "+remain+" GB/Hz";
-
-
-
-
-if(current>=count){
-
-
-clearInterval(timer);
-
-
-openMaintenance();
-
-
-}
-
-
-},step);
-
-
-
-}
-
-
-
-function openMaintenance(){
-
-
-document.getElementById("page2").classList.add("hidden");
-
-
-document.getElementById("page3").classList.remove("hidden");
-
-
-
-setTimeout(()=>{
-
-
-window.location.href=channel;
-
-
-},3000);
-
-
-
-}
-
-
-
-window.onload=function(){
-
-
-if(localStorage.getItem("updated")){
-
-
-document.getElementById("page1").classList.add("hidden");
-
-document.getElementById("page3").classList.remove("hidden");
-
-
-setTimeout(()=>{
-
-window.location.href=channel;
-
-},3000);
-
-
-}
-
-
-}
-
-
-</script>
 </body>
 </html>
