@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Leader Hub Sites</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* Base Reset & Variables */
+        :root {
+            --bg-color: #030305;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #90909a;
+            --accent-red: #ff0033;
+            --online-color: #00ff88;
+            --offline-color: #ff3366;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 18%, rgba(255, 0, 51, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 150, 255, 0.04) 0%, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* Glass Utility */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        /* Main Container */
+        .container {
+            width: 100%;
+            max-width: 460px;
+            padding: 2.5rem 1.25rem 1rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.8rem;
+            flex: 1;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            width: 100%;
+        }
+
+        .site-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #bbbbbb 50%, #ff0033 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 4px;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        /* Logo Blended directly into background */
+        .logo-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .logo-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(255, 0, 51, 0.25) 0%, transparent 70%);
+            filter: blur(20px);
+            z-index: 0;
+            border-radius: 50%;
+            animation: pulseGlow 4s ease-in-out infinite alternate;
+        }
+
+        .logo {
+            position: relative;
+            z-index: 1;
+            max-width: 170px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(255, 0, 51, 0.3));
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.04);
+            filter: drop-shadow(0 0 25px rgba(255, 0, 51, 0.5));
+        }
+
+        /* Main Buttons Section */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            width: 100%;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 1.5rem;
+            height: 62px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            z-index: 1;
+        }
+
+        .btn i.main-icon {
+            font-size: 1.2rem;
+            color: #ffffff;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Status Badges inside Button Corner */
+        .btn-status-badge {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-status-badge.online {
+            color: var(--online-color);
+            border-color: rgba(0, 255, 136, 0.2);
+        }
+
+        .btn-status-badge.offline {
+            color: var(--offline-color);
+            border-color: rgba(255, 51, 102, 0.2);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .status-dot.online {
+            background-color: var(--online-color);
+            box-shadow: 0 0 6px var(--online-color);
+            animation: pulseDot 2s infinite;
+        }
+
+        .status-dot.offline {
+            background-color: var(--offline-color);
+            box-shadow: 0 0 6px var(--offline-color);
+        }
+
+        .btn:hover {
+            background: var(--glass-hover);
+            border-color: rgba(255, 0, 51, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 0, 51, 0.1);
+        }
+
+        .btn:active {
+            transform: translateY(1px) scale(0.99);
+        }
+
+        /* Detailed About Section */
+        .about-section {
+            padding: 1.25rem 1.2rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .about-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-primary);
+        }
+
+        .about-header i {
+            color: var(--accent-red);
+        }
+
+        .about-description {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* About Feature Cards Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-top: 0.2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.7rem 0.8rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .feature-card i {
+            font-size: 0.9rem;
+            color: var(--accent-red);
+        }
+
+        .feature-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .feature-desc {
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 1rem 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-content {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .footer-brand {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Maintenance Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100dvh;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            padding: 1.25rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 340px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transform: scale(0.9);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            border-color: rgba(255, 0, 51, 0.25);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            font-size: 2.2rem;
+            color: var(--accent-red);
+            margin-bottom: 0.2rem;
+        }
+
+        .modal-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .modal-text {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .close-btn {
+            margin-top: 0.5rem;
+            padding: 0.6rem 1.8rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-primary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .close-btn:hover {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        /* Keyframe Animations */
+        @keyframes titleGlow {
+            0% {
+                letter-spacing: 3px;
+                filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+            }
+            100% {
+                letter-spacing: 5px;
+                filter: drop-shadow(0 0 10px rgba(255, 0, 51, 0.6));
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            100% { transform: scale(1.25); opacity: 1; }
+        }
+
+        @keyframes pulseDot {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.5); }
+            70% { box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        }
+
+        @media (max-width: 360px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Header Section -->
+        <header>
+            <div class="site-title">Leader Hub Site</div>
+            
+            <!-- Logo Merged seamlessly with ambient glow -->
+            <div class="logo-wrapper">
+                <img src="https://leaderr1.neocities.org/leaderhub.png" alt="LeaderHub Logo" class="logo">
+            </div>
+        </header>
+
+        <!-- Main Buttons -->
+        <main class="action-buttons">
+            <!-- Button 1: Leader Hub with Online status corner badge -->
+            <a href="movie" class="btn glass">
+                <div class="btn-content">
+                    <i class="fa-solid fa-circle-play main-icon"></i>
+                    <span>Open Leader Hub</span>
+                </div>
+                <div class="btn-status-badge online">
+                    <span class="status-dot online"></span>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Online</span>
+                </div>
+            </a>
+            
+            <!-- Button 2: LeaderHub 2.0 with Offline status corner badge -->
+            <a href="#" class="btn glass" id="btn-lh2">
+                <div class="btn-content">
+                    <i class="fa-solid fa-rocket main-icon"></i>
+                    <span>Open LeaderHub 2.0</span>
+                </div>
+                <div class="btn-status-badge offline">
+                    <span class="status-dot offline"></span>
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <span>Offline</span>
+                </div>
+            </a>
+        </main>
+
+        <!-- Detailed About Section -->
+        <section class="about-section glass">
+            <div class="about-header">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>About LeaderHub</span>
+            </div>
+            
+            <p class="about-description">
+                LeaderHub Official Page Redirecting site. Automatically Source file update by LeaderHub Api keys. Every time checking the error and debugs by Agent. And we are developing new Web App soon will Published.
+            </p>
+
+            <!-- Feature Details Cards -->
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div class="feature-title">Fast Playing</div>
+                    <div class="feature-desc">Buffering fixed</div>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div class="feature-title">Open Sources</div>
+                    <div class="feature-desc">Published Github</div>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-clapperboard"></i>
+                    <div class="feature-title">HD playback</div>
+                    <div class="feature-desc">FBS Api used</div>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-server"></i>
+                    <div class="feature-title">24/7 Online</div>
+                    <div class="feature-desc">Deployment auto</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <span class="footer-brand">LeaderHub</span> &copy; <span id="currentYear"></span> All Copyright Reserved
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Maintenance System Modal -->
+    <div class="modal-overlay" id="maintenanceModal">
+        <div class="modal-content glass">
+            <i class="fa-solid fa-triangle-exclamation modal-icon"></i>
+            <h3 class="modal-title">System Maintenance</h3>
+            <p class="modal-text">LeaderHub 2.0 is currently undergoing updates and optimizations. Please check back later.</p>
+            <button class="close-btn" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dynamic Copyright Year
+            const yearSpan = document.getElementById('currentYear');
+            if(yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Maintenance Modal Elements
+            const btnLH2 = document.getElementById('btn-lh2');
+            const modal = document.getElementById('maintenanceModal');
+            const closeModalBtn = document.getElementById('closeModal');
+
+            // Open Modal (Prevent Navigation)
+            btnLH2.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
+            });
+
+            // Close Modal
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+
+            // Close Modal on Overlay Click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
