@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/LeaderBotzOfficial/Leader-Hub/blob/main/Screenshot_2026_1002_231116.png" width="300">
+</p>
+
 # LEADER HUB
 
 > A web project developed and maintained by LeaderBotzOfficial.
